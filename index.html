@@ -5,107 +5,74 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weather App</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="shortcut icon" href="/assets/images/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://kit.fontawesome.com/388a1f26e9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Weather App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="assets/about.html">About Us</a>
-          </li>
-        </ul>
+  <div class="navbar" id="navbar">
+    <a class="navbar-brand" href="#">Weather App</a>
+    <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="nav-links">
+      <button class="menu-close" id="menu-close"><i class="fas fa-times"></i></button>
+      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="/assets/about.html">About</a>
+      <div class="form">
         <form class="d-flex" role="search">
-          <input id="city" class="form-control me-2" type="search" placeholder="Enter City here!" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+          <input id="city" class="form-control" type="search" placeholder="Enter City Name here!" aria-label="Search">
+          <button class="btn" type="submit" id="submit">Search</button>
         </form>
       </div>
     </div>
-  </nav>
+  </div>
 
   <div class="container">
-    <h1 class="my-4 text-center">Weather for <span id="cityName"></span></h1>
-    <main>
-      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
-            <div class="card-header py-3 text-bg-primary border-primary">
-              <h4 class="my-0 fw-normal">Temperature</h4>
-            </div>
-            <div class="card-body">
-              <h1 class="card-title pricing-card-title"><span id="temp"></span><small
-                  class="text-body-secondary fw-light"> °C</small></h1>
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Temperature is <span id="temp2"></span></li>
-
-                <li>Min Temp is <span id="min_temp"></span></li>
-
-                <li>Max Temp is is <span id="max_temp"></span></li>
-
-              </ul>
-            </div>
-          </div>
+    <h1>Weather for <span id="cityName"></span></h1>
+    <div class="box">
+      <div class="card">
+        <div class="card-header">
+          <h4>Temperature</h4>
         </div>
-        <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
-            <div class="card-header py-3 text-bg-primary border-primary">
-              <h4 class="my-0 fw-normal">Humidity Info</h4>
-            </div>
-            <div class="card-body">
-              <h1 class="card-title pricing-card-title"><span id="humidity"></span><small
-                  class="text-body-secondary fw-light"> %</small></h1>
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Cloud PCT is <span id="cloud_pct"></span></li>
-
-                <li>Feels Like <span id="feels_like"></span></li>
-
-                <li>Humidity is <span id="humidity2"></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
-            <div class="card-header py-3 text-bg-primary border-primary">
-              <h4 class="my-0 fw-normal">Wind Info</h4>
-            </div>
-            <div class="card-body">
-              <h1 class="card-title pricing-card-title"><span id="wind_speed"></span><small
-                  class="text-body-secondary fw-light"> km/h</small></h1>
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Wind Speed is <span id="wind_speed2"></span></li>
-
-                <li>Wind Degree is <span id="wind_degrees"></span></li>
-
-                <li>Sun rises at <span id="sunrise"></span></li>
-
-                <li>Sun sets at <span id="sunset"></span></li>
-
-              </ul>
-            </div>
-          </div>
+        <div class="card-body">
+          <h1 class="card-title"><span id="temp"></span><small> °C</small></h1>
+          <ul class="list-unstyled">
+            <li>Temperature is <span id="temp2"></span>°C</li>
+            <li>Min Temp is <span id="min_temp"></span>°C</li>
+            <li>Max Temp is <span id="max_temp"></span>°C</li>
+          </ul>
         </div>
       </div>
-  </div>
-  </main>
+      <div class="card">
+        <div class="card-header">
+          <h4>Humidity Info</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><span id="humidity"></span><small> %</small></h1>
+          <ul class="list-unstyled">
+            <li>Cloud PCT is <span id="cloud_pct"></span></li>
+            <li>Feels Like <span id="feels_like"></span></li>
+            <li>Humidity is <span id="humidity2"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4>Wind Info</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><span id="wind_speed"></span><small> km/h</small></h1>
+          <ul class="list-unstyled">
+            <li>Wind Speed is <span id="wind_speed2"></span></li>
+            <li>Wind Degree is <span id="wind_degrees"></span></li>
+            <li>Sun rises at <span id="sunrise"></span></li>
+            <li>Sun sets at <span id="sunset"></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
   <script src="/assets/js/script.js"></script>
 </body>
 
