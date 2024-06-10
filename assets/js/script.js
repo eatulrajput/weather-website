@@ -45,4 +45,4 @@ document.getElementById('submit').addEventListener('click', (e) => {
   document.getElementById('nav-links').classList.remove('show');
 });
 
-getWeather("Patna");
+getWeather("New York");
