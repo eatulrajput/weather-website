@@ -158,6 +158,12 @@ h1 {
   background-color: #f0f0f0;
 }
 
+#dateTime {
+  font-size: 1.6em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /* Responsive styles */
 @media (max-width: 800px) {
   .menu-toggle {
@@ -170,7 +176,8 @@ h1 {
 
   .nav-links {
     position: absolute;
-    top: 60px; /* Adjust according to your navbar height */
+    top: 60px;
+    /* Adjust according to your navbar height */
     left: 0;
     width: 100%;
     height: 0;
@@ -209,9 +216,7 @@ h1 {
     z-index: -1;
   }
 
-  .card{
+  .card {
     width: 100%;
   }
 }
-
-

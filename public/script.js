@@ -78,7 +78,7 @@ const updateDateTime = (timezone) => {
   };
   const cityDateTime = new Intl.DateTimeFormat('en-US', options).format(date);
   
-  document.getElementById('dateTime').textContent = `Current Date & Time: ${cityDateTime}`;
+  document.getElementById('dateTime').textContent = `It is ${cityDateTime}`;
 };
 
 // Event listener for submit button
