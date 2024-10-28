@@ -21,6 +21,7 @@ const getWeather = (city) => {
     .then(data => {
       const currentWeather = data.current;
       const forecastDay = data.forecast.forecastday[0].astro;  // Access astro data for sunrise/sunset
+      const timezoneOffset = data.location.tz_id;  // Get the timezone ID from the response
 
       if (currentWeather) {
         // Update weather data fields
@@ -37,11 +38,47 @@ const getWeather = (city) => {
         document.getElementById('wind_degrees').textContent = currentWeather.wind_degree || 'N/A';
         document.getElementById('sunrise').textContent = forecastDay.sunrise || 'N/A';
         document.getElementById('sunset').textContent = forecastDay.sunset || 'N/A';
+        
+        // Show current date and time
+        showDateTime(timezoneOffset);
       } else {
         console.error("Weather data is missing in the response.");
       }
     })
     .catch(err => console.error('Error fetching weather data:', err));
+};
+
+// Function to show current date and time
+let timeInterval; // Variable to store the interval ID
+
+const showDateTime = (timezone) => {
+  // Clear previous interval to prevent multiple intervals running
+  clearInterval(timeInterval);
+
+  // Update time immediately and set interval
+  updateDateTime(timezone); // Initial update
+  timeInterval = setInterval(() => {
+    updateDateTime(timezone);
+  }, 1000); // Update every second
+};
+
+const updateDateTime = (timezone) => {
+  const date = new Date();
+  
+  // Create a Date object with the city's timezone
+  const options = { 
+    timeZone: timezone, 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    second: '2-digit', 
+    hour12: true 
+  };
+  const cityDateTime = new Intl.DateTimeFormat('en-US', options).format(date);
+  
+  document.getElementById('dateTime').textContent = `Current Date & Time: ${cityDateTime}`;
 };
 
 // Event listener for submit button
@@ -59,58 +96,7 @@ getWeather("New Delhi");
 
 // List of cities for suggestions
 const cities = [
-  "Agartala, Tripura, India",
-  "Agra, Uttar Pradesh, India",
-  "Ahmedabad, Gujarat, India",
-  "Aizawl, Mizoram, India",
-  "Amritsar, Punjab, India",
-  "Bangalore, Karnataka, India",
-  "Bhopal, Madhya Pradesh, India",
-  "Bhubaneswar, Odisha, India",
-  "Chandigarh, Chandigarh, India",
-  "Chennai, Tamil Nadu, India",
-  "Coimbatore, Tamil Nadu, India",
-  "Dehradun, Uttarakhand, India",
-  "Delhi, Delhi, India",
-  "Dibrugarh, Assam, India",
-  "Durgapur, West Bengal, India",
-  "Faridabad, Haryana, India",
-  "Gandhinagar, Gujarat, India",
-  "Gangtok, Sikkim, India",
-  "Guwahati, Assam, India",
-  "Hyderabad, Telangana, India",
-  "Imphal, Manipur, India",
-  "Indore, Madhya Pradesh, India",
-  "Itanagar, Arunachal Pradesh, India",
-  "Jaipur, Rajasthan, India",
-  "Jalandhar, Punjab, India",
-  "Jamshedpur, Jharkhand, India",
-  "Jodhpur, Rajasthan, India",
-  "Kochi, Kerala, India",
-  "Kolkata, West Bengal, India",
-  "Kozhikode, Kerala, India",
-  "Lucknow, Uttar Pradesh, India",
-  "Ludhiana, Punjab, India",
-  "Mumbai, Maharashtra, India",
-  "Nagpur, Maharashtra, India",
-  "Nashik, Maharashtra, India",
-  "Panaji, Goa, India",
-  "Patna, Bihar, India",
-  "Pune, Maharashtra, India",
-  "Raipur, Chhattisgarh, India",
-  "Ranchi, Jharkhand, India",
-  "Shillong, Meghalaya, India",
-  "Shimla, Himachal Pradesh, India",
-  "Siliguri, West Bengal, India",
-  "Srinagar, Jammu & Kashmir, India",
-  "Surat, Gujarat, India",
-  "Thiruvananthapuram, Kerala, India",
-  "Tiruchirappalli, Tamil Nadu, India",
-  "Udaipur, Rajasthan, India",
-  "Vadodara, Gujarat, India",
-  "Varanasi, Uttar Pradesh, India",
-  "Vijayawada, Andhra Pradesh, India",
-  "Visakhapatnam, Andhra Pradesh, India"
+  // Your list of cities...
 ];
 
 // Elements
