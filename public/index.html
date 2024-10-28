@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weather App</title>
-  <link rel="shortcut icon" href="/assets/images/logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css">
   <script src="https://kit.fontawesome.com/388a1f26e9.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,10 +17,15 @@
     <div class="nav-links" id="nav-links">
       <button class="menu-close" id="menu-close"><i class="fas fa-times"></i></button>
       <a class="nav-link" href="#">Home</a>
-      <a class="nav-link" href="/assets/about.html">About</a>
+      <a class="nav-link" href="./about.html">About</a>
       <div class="form">
         <form class="d-flex" role="search">
-          <input id="city" class="form-control" type="search" placeholder="Enter City Name here!" aria-label="Search">
+          <!-- Search Input with Suggestions Container -->
+          <input id="city" class="form-control" type="search" placeholder="Enter City Name here!" aria-label="Search"
+            autocomplete="off">
+          <div id="suggestions" class="suggestions-container"></div>
+
+
           <button class="btn" type="submit" id="submit">Search</button>
         </form>
       </div>
@@ -28,18 +33,18 @@
   </div>
 
   <div class="container">
-    <h1>Weather for <span id="cityName"></span></h1>
+    <h1>Weather for <span id="cityName">City</span></h1>
     <div class="box">
       <div class="card">
         <div class="card-header">
           <h4><i class="fa-solid fa-temperature-three-quarters"></i> Temperature</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><span id="temp"></span><small> °C</small></h1>
+          <h1 class="card-title"><span id="temp">-</span><small> °C</small></h1>
           <ul class="list-unstyled">
-            <li>Temperature is <span id="temp2"></span>°C</li>
-            <li>Min Temp is <span id="min_temp"></span>°C</li>
-            <li>Max Temp is <span id="max_temp"></span>°C</li>
+            <li>Temperature is <span id="temp2">-</span>°C</li>
+            <li>Min Temp is <span id="min_temp">-</span>°C</li>
+            <li>Max Temp is <span id="max_temp">-</span>°C</li>
           </ul>
         </div>
       </div>
@@ -48,11 +53,11 @@
           <h4><i class="fa-solid fa-droplet"></i> Humidity Info</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><span id="humidity"></span><small> %</small></h1>
+          <h1 class="card-title"><span id="humidity">-</span><small> %</small></h1>
           <ul class="list-unstyled">
-            <li>Cloud PCT is <span id="cloud_pct"></span></li>
-            <li>Feels Like <span id="feels_like"></span></li>
-            <li>Humidity is <span id="humidity2"></span></li>
+            <li>Cloud PCT is <span id="cloud_pct">-</span></li>
+            <li>Feels Like <span id="feels_like">-</span></li>
+            <li>Humidity is <span id="humidity2">-</span></li>
           </ul>
         </div>
       </div>
@@ -61,19 +66,19 @@
           <h4><i class="fa-solid fa-wind"></i> Wind Info</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><span id="wind_speed"></span><small> km/h</small></h1>
+          <h1 class="card-title"><span id="wind_speed">-</span><small> km/h</small></h1>
           <ul class="list-unstyled">
-            <li>Wind Speed is <span id="wind_speed2"></span></li>
-            <li>Wind Degree is <span id="wind_degrees"></span></li>
-            <li>Sun rises at <span id="sunrise"></span></li>
-            <li>Sun sets at <span id="sunset"></span></li>
+            <li>Wind Speed is <span id="wind_speed2">-</span></li>
+            <li>Wind Degree is <span id="wind_degrees">-</span></li>
+            <li>Sun rises at <span id="sunrise">-</span></li>
+            <li>Sun sets at <span id="sunset">-</span></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="/assets/js/script.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
