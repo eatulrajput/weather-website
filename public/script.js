@@ -95,9 +95,63 @@ document.getElementById('submit').addEventListener('click', (e) => {
 getWeather("New Delhi");
 
 // List of cities for suggestions
+// List of top 200 cities with "city, state, country" format
 const cities = [
-  // Your list of cities...
+  "Tokyo, Tokyo, Japan", "Delhi, Delhi, India", "Shanghai, Shanghai, China", "São Paulo, São Paulo, Brazil", 
+  "Mumbai, Maharashtra, India", "Cairo, Cairo Governorate, Egypt", "Beijing, Beijing, China", 
+  "Dhaka, Dhaka Division, Bangladesh", "Mexico City, Mexico City, Mexico", "Osaka, Osaka Prefecture, Japan", 
+  "Karachi, Sindh, Pakistan", "Chongqing, Chongqing, China", "Istanbul, Istanbul, Turkey", 
+  "Buenos Aires, Buenos Aires, Argentina", "Kolkata, West Bengal, India", "Lagos, Lagos, Nigeria", 
+  "Kinshasa, Kinshasa, DR Congo", "Manila, Metro Manila, Philippines", "Tianjin, Tianjin, China", 
+  "Rio de Janeiro, Rio de Janeiro, Brazil", "Guangzhou, Guangdong, China", "Lahore, Punjab, Pakistan", 
+  "Bangalore, Karnataka, India", "Shenzhen, Guangdong, China", "Moscow, Moscow, Russia", 
+  "Chennai, Tamil Nadu, India", "Bogotá, Bogotá, Colombia", "Paris, Île-de-France, France", 
+  "Jakarta, Jakarta, Indonesia", "Lima, Lima, Peru", "Bangkok, Bangkok, Thailand", 
+  "Hyderabad, Telangana, India", "Seoul, Seoul, South Korea", "Nagoya, Aichi, Japan", 
+  "London, England, United Kingdom", "Chengdu, Sichuan, China", "Nanjing, Jiangsu, China", 
+  "Tehran, Tehran, Iran", "Ho Chi Minh City, Ho Chi Minh, Vietnam", "Luanda, Luanda, Angola", 
+  "New York City, New York, USA", "Ahmedabad, Gujarat, India", "Kuala Lumpur, Federal Territory, Malaysia", 
+  "Hong Kong, Hong Kong, China", "Hangzhou, Zhejiang, China", "Surat, Gujarat, India", 
+  "Suzhou, Jiangsu, China", "Riyadh, Riyadh, Saudi Arabia", "Shijiazhuang, Hebei, China", 
+  "Wuhan, Hubei, China", "Harbin, Heilongjiang, China", "Giza, Giza, Egypt", "Shantou, Guangdong, China", 
+  "Los Angeles, California, USA", "Pune, Maharashtra, India", "Santiago, Santiago Metropolitan, Chile", 
+  "Madrid, Madrid, Spain", "Toronto, Ontario, Canada", "Dar es Salaam, Dar es Salaam, Tanzania", 
+  "Johannesburg, Gauteng, South Africa", "Barcelona, Catalonia, Spain", "Sanaa, Amanat Al Asimah, Yemen", 
+  "Kabul, Kabul, Afghanistan", "Qingdao, Shandong, China", "Alexandria, Alexandria, Egypt", 
+  "Dalian, Liaoning, China", "Faisalabad, Punjab, Pakistan", "Nairobi, Nairobi, Kenya", 
+  "Zunyi, Guizhou, China", "Dubai, Dubai, UAE", "Ankara, Ankara, Turkey", 
+  "Rangoon, Yangon Region, Myanmar", "Busan, Busan, South Korea", "Hanoi, Hanoi, Vietnam", 
+  "Ningbo, Zhejiang, China", "Rome, Lazio, Italy", "Haikou, Hainan, China", 
+  "Cleveland, Ohio, USA", "Houston, Texas, USA", "Berlin, Berlin, Germany", 
+  "Sydney, New South Wales, Australia", "Melbourne, Victoria, Australia", 
+  "Munich, Bavaria, Germany", "Stuttgart, Baden-Württemberg, Germany", 
+  "Miami, Florida, USA", "Milan, Lombardy, Italy", "Dubai, Dubai, UAE", 
+  "Lisbon, Lisbon, Portugal", "Birmingham, Alabama, USA", "Toronto, Ontario, Canada", 
+  "Zurich, Zurich, Switzerland", "Atlanta, Georgia, USA", "Vienna, Vienna, Austria", 
+  "Dublin, Leinster, Ireland", "Manchester, England, United Kingdom", 
+  "Lyon, Auvergne-Rhône-Alpes, France", "Frankfurt, Hesse, Germany", 
+  "Madrid, Madrid, Spain", "Copenhagen, Capital Region, Denmark", 
+  "Edinburgh, Scotland, United Kingdom", "Helsinki, Uusimaa, Finland", 
+  "Brussels, Brussels, Belgium", "Ottawa, Ontario, Canada", "Stockholm, Stockholm, Sweden", 
+  "Glasgow, Scotland, United Kingdom", "Antwerp, Flanders, Belgium", 
+  "Oslo, Oslo, Norway", "Lisbon, Lisbon, Portugal", "Warsaw, Masovian, Poland", 
+  "Cape Town, Western Cape, South Africa", "Vienna, Vienna, Austria", 
+  "Hamburg, Hamburg, Germany", "Montreal, Quebec, Canada", "Kiev, Kiev, Ukraine", 
+  "Auckland, Auckland, New Zealand", "Barcelona, Catalonia, Spain", "Brisbane, Queensland, Australia", 
+  "Perth, Western Australia, Australia", "Adelaide, South Australia, Australia", 
+  "Glasgow, Scotland, United Kingdom", "Leeds, England, United Kingdom", 
+  "Nottingham, England, United Kingdom", "Belfast, Northern Ireland, United Kingdom", 
+  "Bristol, England, United Kingdom", "Liverpool, England, United Kingdom", 
+  "Sheffield, England, United Kingdom", "London, Ontario, Canada", 
+  "Halifax, Nova Scotia, Canada", "Lima, Lima Province, Peru", 
+  "Bogotá, Bogotá Capital District, Colombia", "Cartagena, Bolívar, Colombia", 
+  "Barranquilla, Atlántico, Colombia", "Quito, Pichincha, Ecuador", 
+  "Guayaquil, Guayas, Ecuador", "Asunción, Asunción, Paraguay", 
+  "Montevideo, Montevideo Department, Uruguay", "Santiago, Santiago Metropolitan Region, Chile", 
+  "Valparaíso, Valparaíso Region, Chile", "Buenos Aires, Buenos Aires Province, Argentina"
+  // More cities can be added to complete the list up to 200 cities
 ];
+
 
 // Elements
 const cityInput = document.getElementById('city');
