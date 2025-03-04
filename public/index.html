@@ -1,87 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weather App</title>
   <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
   <link rel="stylesheet" href="./style.css">
+
+  <!-- Bootstrap 5 (Modern UI) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/388a1f26e9.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts (For better typography) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1E3C72, #2A5298);
+      color: white;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .search-box {
+      border-radius: 50px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+    }
+
+    .search-box::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .weather-card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    .weather-card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-header {
+      background: linear-gradient(45deg, #ff6b6b, #ff4757);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="navbar" id="navbar">
-    <a class="navbar-brand" href="#">Weather App</a>
-    <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
-    <div class="nav-links" id="nav-links">
-      <button class="menu-close" id="menu-close"><i class="fas fa-times"></i></button>
-      <a class="nav-link" href="#">Home</a>
-      <a class="nav-link" href="./about.html">About</a>
-      <div class="form">
-        <form class="d-flex" role="search">
-          <!-- Search Input with Suggestions Container -->
-          <input id="city" class="form-control" type="search" placeholder="Enter City Name here!" aria-label="Search"
-            autocomplete="off">
-          <div id="suggestions" class="suggestions-container"></div>
 
-
-          <button class="btn" type="submit" id="submit">Search</button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-cloud-sun"></i> Weather App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+        </ul>
+        <!-- Search Form -->
+        <form class="d-flex ms-3">
+          <input id="city" class="form-control search-box me-2 text-white" type="search" placeholder="Enter City Name">
+          <button class="btn btn-light rounded-circle" type="submit" id="submit"><i class="fas fa-search"></i></button>
         </form>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <div class="container">
-    <h1>Weather for <span id="cityName">City</span></h1>
-    <div id="dateTime"></div>
+  <!-- Main Content -->
+  <div class="container text-center">
+    <h1 class="mt-4"><i class="fas fa-map-marker-alt"></i> Weather in <span id="cityName">City</span></h1>
+    <p id="dateTime" class="text-white-50"></p>
 
-
-    <div class="box">
-      <div class="card">
-        <div class="card-header">
-          <h4><i class="fa-solid fa-temperature-three-quarters"></i> Temperature</h4>
-        </div>
-        <div class="card-body">
-          <h1 class="card-title"><span id="temp">-</span><small> °C</small></h1>
-          <ul class="list-unstyled">
-            <li>Temperature is <span id="temp2">-</span>°C</li>
-            <li>Min Temp is <span id="min_temp">-</span>°C</li>
-            <li>Max Temp is <span id="max_temp">-</span>°C</li>
-          </ul>
+    <div class="row justify-content-center mt-4">
+      <!-- Temperature Card -->
+      <div class="col-md-4">
+        <div class="weather-card">
+          <div class="card-header">
+            <h4><i class="fa-solid fa-temperature-three-quarters"></i> Temperature</h4>
+          </div>
+          <div class="card-body">
+            <h1><span id="temp">-</span><small> °C</small></h1>
+            <p>Min: <span id="min_temp">-</span>°C | Max: <span id="max_temp">-</span>°C</p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h4><i class="fa-solid fa-droplet"></i> Humidity Info</h4>
-        </div>
-        <div class="card-body">
-          <h1 class="card-title"><span id="humidity">-</span><small> %</small></h1>
-          <ul class="list-unstyled">
-            <li>Cloud PCT is <span id="cloud_pct">-</span></li>
-            <li>Feels Like <span id="feels_like">-</span></li>
-            <li>Humidity is <span id="humidity2">-</span></li>
-          </ul>
+
+      <!-- Humidity Card -->
+      <div class="col-md-4">
+        <div class="weather-card">
+          <div class="card-header">
+            <h4><i class="fa-solid fa-droplet"></i> Humidity</h4>
+          </div>
+          <div class="card-body">
+            <h1><span id="humidity">-</span><small> %</small></h1>
+            <p>Cloud Cover: <span id="cloud_pct">-</span>%</p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h4><i class="fa-solid fa-wind"></i> Wind Info</h4>
-        </div>
-        <div class="card-body">
-          <h1 class="card-title"><span id="wind_speed">-</span><small> km/h</small></h1>
-          <ul class="list-unstyled">
-            <li>Wind Speed is <span id="wind_speed2">-</span></li>
-            <li>Wind Degree is <span id="wind_degrees">-</span></li>
-            <li>Sun rises at <span id="sunrise">-</span></li>
-            <li>Sun sets at <span id="sunset">-</span></li>
-          </ul>
+
+      <!-- Wind Card -->
+      <div class="col-md-4">
+        <div class="weather-card">
+          <div class="card-header">
+            <h4><i class="fa-solid fa-wind"></i> Wind</h4>
+          </div>
+          <div class="card-body">
+            <h1><span id="wind_speed">-</span><small> km/h</small></h1>
+            <p>Wind Degree: <span id="wind_degrees">-</span>°</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./script.js"></script>
 </body>
-
 </html>
